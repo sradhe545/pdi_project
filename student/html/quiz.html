@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #cont{
+      width: 50%;
+      margin: auto;
+    }
+    .box{
+        border-bottom: solid 1px grey;
+        padding: 20px;
+        background-color: lightgray;
+        margin-top: 15px;
+    }
+    p{
+        font-size: 22px;
+        color: blue;
+        font-weight: 400;
+    }
+    #submit{
+        margin-top: 40px;
+        font-size: 24px;
+        padding: 10px 20px 10px 20px;
+        margin-left: 40%;
+        margin-bottom: 50px;
+        color: white;
+        background-color: teal;
+        border: none;
+    }
+    #submit:hover{
+        cursor: pointer;
+        color: blue;
+        background-color:grey
+    }
+    h1{
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    .scoreVal{
+        text-align: center;
+        margin-bottom: 30px;
+        font-size: 24px;
+    }
+</style>
+<body>
+    <h1>Lets Start the quiz!</h1>
+    <div id="cont">
+
+        <div class="box"><p> Q.1 What is HTML</p>
+            <input type="radio" name="1" id="correct1">Hyper Text Markup Language<br/>
+            <input type="radio" name="1" >None<br/>
+            <input type="radio" name="1" >none<br/>
+            <input type="radio" name="1" >none<br/>
+        </div>
+
+        <div class="box"><p>Q.2 What is the correct command to create a new React project?</p>
+            <br/>
+            <input type="radio" name="2" >Hyper Text Markup Language<br/>
+            <input type="radio" name="2" >None<br/>
+            <input type="radio" name="2" >none<br/>
+            <input type="radio" name="2" id="correct2">none<br/>       
+        </div>
+
+        <div class="box"><p> Q.3 What is HTML</p>     
+            <input type="radio" name="3" id="correct2">Hyper Text Markup Language<br/>
+            <input type="radio" name="3" >None<br/>
+            <input type="radio" name="3" id="correct3">none<br/>
+            <input type="radio" name="3" >none<br/>
+        </div>
+
+        <div class="box"><p>
+            Q.4 What is HTML</p>
+            <input type="radio" name="4" >Hyper Text Markup Language<br/>
+            <input type="radio" name="4" >None<br/>
+            <input type="radio" name="4" id="correct4">none<br/>
+            <input type="radio" name="4" >none<br/>
+        </div>
+
+        <div class="box"><p> Q.5 What is HTML</p>
+            <input type="radio" name="5" >Hyper Text Markup Language<br/>
+            <input type="radio" name="5" >None<br/>
+            <input type="radio" name="5" >none<br/>
+            <input type="radio" name="5" id="correct5">none<br/>
+        </div>
+
+        <div class="box"><p> Q.6 What is HTML</p>
+            <input type="radio" name="6" id="correct6">Hyper Text Markup Language<br/>
+            <input type="radio" name="6" >None<br/>
+            <input type="radio" name="6" >none<br/>
+            <input type="radio" name="6" >none<br/>
+        </div>
+
+        <div class="box"><p>  Q.7 What is HTML</p>
+            <input type="radio" name="7" id="correct7">Hyper Text Markup Language<br/>
+            <input type="radio" name="7" >None<br/>
+            <input type="radio" name="7" >none<br/>
+            <input type="radio" name="7" >none<br/>
+        </div>
+
+        <div class="box"><p>Q.8 What is HTML</p>
+            <input type="radio" name="8" >Hyper Text Markup Language<br/>
+            <input type="radio" name="8" >None<br/>
+            <input type="radio" name="8" >none<br/>
+            <input type="radio" name="8" id="correct8">none<br/>          
+        </div>
+
+        <div class="box"><p> Q.9 What is HTML</p>
+            <input type="radio" name="9" >Hyper Text Markup Language<br/>
+            <input type="radio" name="9" id="correct9">None<br/>
+            <input type="radio" name="9" >none<br/>
+            <input type="radio" name="9" >none<br/>
+           
+        
+        </div>
+
+        <div class="box"><p> Q.10 What is HTML</p>
+            <input type="radio" name="10" id="correct10">Hyper Text Markup Language<br/>
+            <input type="radio" name="10" >None<br/>
+            <input type="radio" name="10" >none<br/>
+            <input type="radio" name="10" >none<br/>
+        
+        </div>
+
+       <input type="submit" id="submit">
+
+    </div>
+   
+
+
+   
+
+    <div id="scorecard">
+
+    </div>
+</body>
+</html>
+<script>
+    document.getElementById("submit").addEventListener("click", function(){
+        let score=0
+        if(document.getElementById("correct1").checked)
+        {
+           score++
+        }
+        if(document.getElementById("correct2").checked)
+        {
+            score++
+        }
+        if(document.getElementById("correct3").checked)
+        {
+            score++
+        }if(document.getElementById("correct4").checked)
+        {
+            score++
+        }if(document.getElementById("correct5").checked)
+        {
+            score++
+        }if(document.getElementById("correct6").checked)
+        {
+            score++
+        }if(document.getElementById("correct7").checked)
+        {
+            score++
+        }if(document.getElementById("correct8").checked)
+        {
+            score++
+        }if(document.getElementById("correct9").checked)
+        {
+            score++
+        }if(document.getElementById("correct10").checked)
+        {
+            score++
+        }
+           let x= document.getElementById("scorecard")
+           let p1=document.createElement("p")
+           p1.setAttribute("class", "scoreVal")
+           p1.innerText=`Your  Score is ${score}`
+           x.append(p1)
+
+           setTimeout(()=>{
+            window.location.href="./dashboard.html"
+           },2000)
+    })
+</script>

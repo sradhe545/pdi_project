@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+      #maindiv{
+        border-bottom:solid 1px white;
+        height :auto;
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+        width: 70%;
+        margin: auto;
+
+    }
+    #getLec{
+        margin-top: 50px;
+    }
+    #child-div1{
+        display: flex;
+        width: 200px;
+        justify-content: space-between;
+        padding-left: 40px;
+    }
+    #child-div2{
+        display: flex;
+        width: 200px;
+        justify-content: space-between;
+        padding-left: 40px;
+    }
+    #title:hover{
+        cursor: pointer;
+    }
+    #type{
+        background-color: blue;
+        color: white;
+        padding: 5px 10px 5px 10px;
+        height: 25px;
+        border-radius: 5px;
+    }
+    #created{
+        padding-left: 40px;
+    }
+
+</style>
+<body>
+
+        <select name="" id="filter" onChange="handleFilter()">
+            <option value="">Select Role</option>
+            <option value="Frontend">Frontend</option>
+            <option value="Backend">Backend</option>
+            <option value="Full Stack">Full Stack</option>
+        </select>
+
+        <div id="container">
+             <div id="getLec">
+             </div>       
+        </div>
+    
+</body>
+</html>
+<script>
+
+
+
+let lectures=JSON.parse(localStorage.getItem("lect_detail"))||[]
+lec(lectures)
+function handleFilter()
+{
+    let val=document.querySelector("#filter").value
+    let filterData=lectures.filter((el)=>{return el.role==val})
+    lec(filterData)
+}
+function lec(data)
+{
+    let myLec=document.getElementById("getLec")
+    myLec.innerHTML=null
+   data.forEach((el)=>{
+    let h3=document.createElement("h3")
+    h3.innerText=el.title
+    h3.setAttribute("id","title")
+    h3.addEventListener("click",()=>{
+        localStorage.setItem("pdi_ind_lec",JSON.stringify(el))
+        window.location.href="../html/individualpage.html"
+    })
+    let div1=document.createElement("div")
+    div1.setAttribute("id","child-div1")
+    let p11=document.createElement("p")
+    p11.setAttribute("id","type")
+    
+    p11.innerText="Video"
+    div1.append(h3,p11)
+    let p22=document.createElement("p")
+    p22.innerText="Created By "+el.createdBy
+    p22.setAttribute("id","created")
+
+    let p1=document.createElement("p")
+    p1.innerText=el.role
+    let p2=document.createElement("p")
+    let t1=el.timeOfCreation.split("T")[0]
+    
+    p2.innerText=t1
+    let div=document.createElement("div")
+    div.setAttribute("id","child-div2")
+    div.append(p1,p2)
+    let maindiv=document.createElement("div")
+    maindiv.append(div1,p22,div)
+    maindiv.setAttribute("id","maindiv")
+    myLec.append(maindiv)
+   })
+}
+</script>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+      table {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 90%;
+    margin: auto;
+    margin-top: 50px;
+    text-align: center;
+  }
+  table td,
+  table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+  }
+  table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #0468aa;
+    color: white;
+    text-align: center;
+  }
+</style>
+<body>
+  <select name="" id="sort" onChange="handleSort()">
+    <option value="">Sort By Date</option>
+    <option value="asc">Ascending</option>
+    <option value="dsc">Descending</option>
+  </select>
+  <select name="" id="filter" onChange="handleFilter()">
+    <option value="">Filter By Role</option>
+    <option value="Frontend">Frontend</option>
+    <option value="Backend">Backend</option>
+    <option value="Full Stack">Full Stack</option>
+
+  </select>
+
+    <table>
+        <thead>
+          <tr>
+            <th>Created By</th>
+            <th>Title</th>
+            <th>Role</th>
+            <th>Created At</th>
+            <th>Video</th>
+            <th>Delete</th>
+          </tr>
+         </thead>
+         <tbody>
+           
+        </tbody>
+      </table>
+</body>
+</html>
+<script>
+let lectures=JSON.parse(localStorage.getItem("lect_detail"))||[]
+lec(lectures)
+
+function handleSort()
+{
+  let date=document.querySelector("#sort").value
+    if(date=="asc")
+    {
+      let sort=lectures.sort((a,b) =>  new Date(a.timeOfCreation) - new Date(b.timeOfCreation));
+       lec(sort)
+    }
+    if(date=="dsc")
+    {
+      let sort=lectures.sort((a,b) =>  new Date(b.timeOfCreation) - new Date(a.timeOfCreation));
+       lec(sort)
+    }
+    
+}
+function handleFilter()
+{
+  console.log(lectures);
+  let val=document.getElementById("filter").value
+  let filterData=lectures.filter((el)=>{return el.role==val})
+  lec(filterData)
+}
+
+function lec(x)
+{
+var tbody=document.querySelector("tbody")
+tbody.innerHTML=null
+x.forEach((el,i)=>{
+    let tr=document.createElement("tr")
+    let td0=document.createElement("td")
+    td0.innerText=el.createdBy
+    let td1=document.createElement("td")
+    td1.innerText=el.title
+    let td11=document.createElement("td")
+    td11.innerText=el.role
+    let td2=document.createElement("td")
+    let toj=el.timeOfCreation.split("T")[0]
+    td2.innerText=toj
+    let td3=document.createElement("td")
+    let vid=document.createElement("video")
+    vid.controls=true
+    let source=document.createElement("source")
+    source.setAttribute("src",el.video)
+    source.setAttribute("type","video/mp4")
+    vid.appendChild(source)
+    vid.setAttribute("width","200")
+    td3.append(vid)
+    let td4=document.createElement("td")
+    let btn=document.createElement("button")
+    btn.innerText="Delete"
+    btn.addEventListener("click",function (){
+      x.splice(i,1)
+      localStorage.setItem("lect_detail",JSON.stringify(lectures))
+      window.location.reload()
+    })
+    td4.append(btn)
+
+    tr.append(td0,td1,td11,td2,td3,td4)
+    tbody.append(tr)
+})
+}
+</script>

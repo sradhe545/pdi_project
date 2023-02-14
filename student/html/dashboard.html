@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #cont{
+        display: flex;
+        /* justify-content: space-between; */
+    }
+    #cont2{
+        display: flex;
+        width: 250px;
+        align-items: center;
+        justify-content: space-between;
+    }
+    #top{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 80%;
+        margin: auto;
+    }
+    img{
+        width:150px
+    }
+    .type{
+        font-size: 24px;
+    }
+    /* .type:hover{
+        color: blue;
+        border-bottom: 1px solid blue;
+        cursor: pointer;
+    } */
+
+    #stu-info{
+        height: 40px;
+        width: 40px;
+        border:none;
+        border-radius: 50%;
+        font-size: 24px;
+        background-color: teal;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+    }
+    a{
+        text-decoration: none;
+    }
+
+
+
+
+
+    #main-section{
+        display: flex;
+        justify-content: space-between;
+        width: 80%;
+        margin: auto;
+    }
+    #main-section>a{
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        padding: 20px;
+        text-align: center;
+        border-radius: 10px;
+    }
+    #main-section>a:hover{
+        border-radius: 10px;
+        border: 1px solid blue;
+        cursor: pointer;
+    }
+    .course{
+        font-size: 24px;
+        font-weight: 600;
+    }
+</style>
+<body>
+    <div id="top">
+       <div id="cont">
+          <div><img src="https://thumbs.dreamstime.com/b/lms-letter-initial-logo-design-lms-letter-initial-logo-design-vector-illustration-letter-initial-logo-design-vector-illustration-236632062.jpg" alt=""></div>
+          <!-- <div id="cont2">
+            <p class="type" style="color: blue; border-bottom: 1px solid blue;">Lectures</p>
+            <p class="type">Assignment</p>
+         </div> -->
+       </div>
+
+       <div>
+        <a href="./stuProfile.html">
+            <div id="stu-info">
+    
+          </div></a>
+       </div>
+    </div>
+
+
+    <div>
+            
+            <h1>Services</h1>
+            <div id="main-section">
+               <a href="./assignment.html"><div>
+                    <img src="https://thumbs.dreamstime.com/b/modern-computer-programming-code-screen-showing-random-scripts-113805394.jpg" alt="">
+                    <p class="course">Web Development</p>
+                    <p>Here one can learn the different types of Development Course</p>
+                </div></a>
+
+                <a href="./video_tutorialpage.html"><div>
+                    <img src="https://img.freepik.com/free-vector/designer-online-service-platform-advert-designer-graphic-illustrator-artist-creating-modern-advertisment-video-tutorial-flat-illustration-vector_613284-3014.jpg?w=2000" alt="">
+                    <p class="course">Video Tutorials</p>
+                    <p>Here one can see the tutorials of Web Development</p>
+                </div></a> 
+                
+                <a href="./quiz.html"><div>
+                    <img src="https://img.freepik.com/free-vector/quiz-neon-sign_1262-19629.jpg?w=2000" alt="">
+                    <p class="course">Quiz</p>
+                    <p>Here one can test their knowledge by giving quiz</p>
+                </div></a> 
+            </div>
+    </div>
+
+  
+</body>
+</html>
+<script>
+        let info=document.querySelector("#stu-info")
+let ls=JSON.parse(localStorage.getItem("pdi_stu"))
+let val=(ls.username[0].toUpperCase())
+info.append(val)
+</script>

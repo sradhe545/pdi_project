@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+  body {
+  background-image: url('https://www.melimu.com/wp-content/uploads/2022/07/bg.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+}
+
+.role{
+   font-size: 24px;
+   font-weight: bold;
+   color: white;
+}
+.role:hover{
+    color: blue;
+    border-bottom: 2px solid blue;
+}
+nav{
+    width: 500px;
+    display: flex;
+    justify-content: space-between;
+    margin-left: 50%;
+}
+
+a{
+    text-decoration: none;
+}
+#tag-line{
+font-family: Inter, sans-serif;
+font-size: 49px;
+font-weight: 900;
+color: white;
+
+}
+#info{
+font-family: Inter, sans-serif;
+font-size: 23px;
+font-weight: 400;
+color: white;
+
+}
+#back{
+    display: flex;
+    justify-content: space-around;
+    width: 70%;
+    margin: auto;
+    margin-top: 50px;
+}
+img{
+    height: 400px;
+}
+</style> 
+<body>
+    <nav>
+        <a href="./admin/html/signup.html"><p class="role">Admin</p></a>
+        <a href="./ts/html/signup.html"><p class="role">Teaching Staff</p></a>
+        <a href="./student/html/signup.html"><p class="role">Student</p></a>
+        
+        
+    </nav>
+    <div >
+        <!-- <h1>Learning Management System (LMS) </h1> -->
+        
+        <div id="back">
+            <div>
+                <p id="tag-line">India’s Best Online Learning Platform!</p>
+                <p id="info">Online or Offline Learning LMS ensures <br/><br/>mobile-friendly continuing education for all.</p>
+            </div>
+            <img src="https://www.melimu.com/wp-content/uploads/2022/07/Guy-300x263.png" alt="">
+        </div>
+    </div>
+</body>
+</html>
+<script src="./index.js"></script>

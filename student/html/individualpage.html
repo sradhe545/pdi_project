@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    
+    #container{
+        width: 70%;
+        /* border: solid 1px black; */
+        height: auto;
+        margin: auto;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+        border-radius: 10px;
+        margin-top: 40px;
+    }
+   video{
+    margin-left: 45px;
+    margin-top: 40px;
+   }
+   #vtype{
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    padding-top: 20px;
+    color: blue;
+   }
+   #title{
+     padding: 40px 20px 0px 50px;
+     font-size: 36px;
+     font-weight: bold;
+   }
+   #desc{
+    padding: 20px 20px 50px 50px;
+     font-size: 18px;
+     font-weight: 300;
+   }
+</style>
+<body>
+    <a href="./dashboard.html">Back</a>
+    <div id="container">
+
+    </div>
+</body>
+</html>
+<script>
+    let ind=JSON.parse(localStorage.getItem("pdi_ind_lec"))
+console.log(ind)
+
+let cont=document.getElementById("container")
+let p1=document.createElement("p")
+p1.setAttribute("id","vtype")
+p1.innerText="VIDEO"
+let vid=document.createElement("video")
+vid.controls=true
+vid.setAttribute("width","950")
+let source=document.createElement("source")
+source.setAttribute("src",ind.video)
+source.setAttribute("type","video/mp4")
+vid.appendChild(source)
+let p2=document.createElement("p")
+p2.setAttribute("id","title")
+p2.innerText=ind.title
+let p3=document.createElement("p")
+p3.setAttribute("id","desc")
+p3.innerText=ind.description
+cont.append(p1,vid,p2,p3)
+
+</script>

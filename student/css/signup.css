@@ -1,0 +1,40 @@
+input{
+    width: 250px;
+    height: 30px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    display: block;
+    /* margin-top: 10px; */
+    outline: none;
+    background-color: lightgrey;
+
+}
+select{
+    width: 250px;
+    height: 30px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    display: block;
+    /* margin-top: 10px; */
+    outline: none;
+    background-color: lightgrey;
+}
+button{
+    width: 250px;
+    border: none;
+    background-color: teal;
+    margin-top: 15px;
+    color: white;
+    padding: 10px 0 10px 0;
+    font-size: 24px;
+}
+#input_part{
+    margin-left: 40%;
+}
+h1{
+    margin-left: 40%;
+    margin-bottom: 60px;
+    margin-top: 50px;
+}

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+      table {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 90%;
+    margin: auto;
+    margin-top: 50px;
+    text-align: center;
+  }
+  table td,
+  table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+  }
+  table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #0468aa;
+    color: white;
+    text-align: center;
+  }
+</style>
+<body>
+  <select name="" id="sort" onChange="handleSort()">
+    <option value="">Sort By Date</option>
+    <option value="asc">Ascending</option>
+    <option value="dsc">Descending</option>
+  </select>
+  <select name="" id="filter" onChange="handleFilter()">
+    <option value="">Filter By Role</option>
+    <option value="Frontend">Frontend</option>
+    <option value="Backend">Backend</option>
+    <option value="Full Stack">Full Stack</option>
+
+  </select>
+
+  <select name="" id="filterGender" onChange="handleFilterGender()">
+    <option value="">Filter By Gender</option>
+    <option value="Male">Male</option>
+    <option value="Female">Female</option>
+  </select>
+    <table>
+        <thead>
+          <tr>
+
+            <th>Profile Pic</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Gender
+            <th>Date of Joining</th>
+            <th>Delete</th>
+
+          </tr>
+         </thead>
+         <tbody>
+           
+        </tbody>
+      </table>
+</body>
+</html>
+<script>
+let lectures=JSON.parse(localStorage.getItem("pdi_stu_info"))||[]
+lec(lectures)
+
+function handleSort()
+{
+  let date=document.querySelector("#sort").value
+    if(date=="asc")
+    {
+      let sort=lectures.sort((a,b) =>  new Date(a.toj) - new Date(b.toj));
+       lec(sort)
+    }
+    if(date=="dsc")
+    {
+      let sort=lectures.sort((a,b) =>  new Date(b.toj) - new Date(a.toj));
+       lec(sort)
+    }
+    
+}
+function handleFilter()
+{
+  console.log(lectures);
+  let val=document.getElementById("filter").value
+  let filterData=lectures.filter((el)=>{return el.role==val})
+  lec(filterData)
+}
+
+function handleFilterGender()
+{
+  console.log(lectures);
+  let val=document.getElementById("filterGender").value
+  let filterData=lectures.filter((el)=>{return el.gender==val})
+  lec(filterData)
+}
+function lec(x)
+{
+var tbody=document.querySelector("tbody")
+tbody.innerHTML=null
+x.forEach((el,i)=>{
+    let tr=document.createElement("tr")
+    let td0=document.createElement("td")
+    let img=document.createElement("img")
+    img.src=el.profilepic
+    td0.append(img)
+    let td1=document.createElement("td")
+    td1.innerText=el.username
+    let td11=document.createElement("td")
+    td11.innerText=el.email
+    let td2=document.createElement("td")
+    td2.innerText=el.role
+    let td3=document.createElement("td")
+    td3.innerText=el.gender
+    let td33=document.createElement("td")
+     let toj=el.toj.split("T")[0]
+
+    td33.innerText=toj
+    let td4=document.createElement("td")
+    let btn=document.createElement("button")
+    btn.innerText="Delete"
+    btn.addEventListener("click",function (){
+      x.splice(i,1)
+      localStorage.setItem("pdi_stu_info",JSON.stringify(lectures))
+      window.location.reload()
+    })
+    td4.append(btn)
+
+    tr.append(td0,td1,td11,td2,td3,td33,td4)
+    tbody.append(tr)
+})
+}
+</script>
